@@ -1,5 +1,10 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+
 import { server } from "./server.js";
+import "./tools/deployment.js";
+import "./tools/instance.js";
+import "./tools/logs.js";
+import "./tools/service.js";
 
 try {
   const transport = new StdioServerTransport();
