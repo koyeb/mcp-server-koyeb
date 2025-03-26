@@ -1,0 +1,25 @@
+{
+  "name": "@koyeb/mcp-server",
+  "packageManager": "pnpm@10.6.5",
+  "type": "module",
+  "files": [
+    "build"
+  ],
+  "bin": {
+    "koyeb-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@koyeb/api-client-js": "^1.1.1",
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.13",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
