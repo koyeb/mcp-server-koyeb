@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { deploymentDefinitionSchema } from "../schemas.js";
 import { server } from "../server.js";
 import { createTool } from "../utils.js";
 
@@ -23,10 +24,30 @@ server.tool(
   "get-service",
   "Get a specific service by its id",
   {
-    // prettier-ignore
     path: z.object({
-      id: z.string().optional().describe('The id of the Service'),
+      id: z.string().describe("The id of the Service"),
     }),
   },
   createTool("getService")
+);
+
+server.tool(
+  "update-service",
+  "Update a service's configuration by creating a new deployment",
+  {
+    path: z.object({
+      id: z.string().describe("The id of the Service"),
+    }),
+    // prettier-ignore
+    query: z.object({
+      dry_run: z.string().optional().describe('If set, do not trigger a deployment, only run validation and check that the service exists'),
+    }).optional(),
+    // prettier-ignore
+    body: z.object({
+      definition: deploymentDefinitionSchema,
+      save_only: z.boolean().optional().describe('If set, do not trigger a deployment, only store the new settings'),
+      skip_build: z.boolean().optional().describe('If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.')
+    }),
+  },
+  createTool("updateService")
 );
