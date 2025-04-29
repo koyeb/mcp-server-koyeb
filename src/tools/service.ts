@@ -32,6 +32,21 @@ server.tool(
 );
 
 server.tool(
+  "create-service",
+  "Create a new service inside an existing app",
+  {
+    query: z.object({
+      dry_run: z.string().optional().describe('If set only run validation'),
+    }).optional(),
+    body: z.object({
+      app_id: z.string().describe('The id of the app'),
+      definition: deploymentDefinitionSchema,
+    }),
+  },
+  createTool("createService")
+);
+
+server.tool(
   "update-service",
   "Update a service's configuration by creating a new deployment",
   {

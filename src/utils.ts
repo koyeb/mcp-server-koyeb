@@ -19,7 +19,7 @@ export function createTool(name: keyof Koyeb): ToolCallback<ZodRawShape> {
     });
 
     if (result.error) {
-      return createTextContent(result.error.message ?? "Error");
+      return createTextContent('Error: ' + result.error ? JSON.stringify(result.error) : 'unknown error');
     }
 
     return createTextContent(JSON.stringify(result.data));
