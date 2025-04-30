@@ -180,11 +180,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hey-api/client-fetch@0.8.3':
-    resolution: {integrity: sha512-EBVa8wwUMyBSeQ32PtCz6u5bFQZIMAufvwCT1ZtpjqT3caJQEza4NokbGU50q1ZVrMsM5Ot6GuDNJOF3TMo26Q==}
+  '@hey-api/client-fetch@0.8.4':
+    resolution: {integrity: sha512-SWtUjVEFIUdiJGR2NiuF0njsSrSdTe7WHWkp3BLH3DEl2bRhiflOnBo29NSDdrY90hjtTQiTQkBxUgGOF29Xzg==}
 
   '@koyeb/api-client-js@1.1.1':
-    resolution: {integrity: sha512-Qjw4Y6MdOhDY2pjoJDJ/Fqi7fknNYyuRQ2lBrrjxY27AC3VqOLitfye73anporBQncXE/oCdTccq+bIkM7d2hw==, tarball: https://npm.pkg.github.com/download/@koyeb/api-client-js/1.1.1/0df92821e25f6b6c7ab2cf5f371a3af9aaa9ade8}
+    resolution: {integrity: sha512-Qjw4Y6MdOhDY2pjoJDJ/Fqi7fknNYyuRQ2lBrrjxY27AC3VqOLitfye73anporBQncXE/oCdTccq+bIkM7d2hw==}
     engines: {node: '23'}
 
   '@modelcontextprotocol/sdk@1.7.0':
@@ -636,11 +636,11 @@ snapshots:
   '@esbuild/win32-x64@0.25.1':
     optional: true
 
-  '@hey-api/client-fetch@0.8.3': {}
+  '@hey-api/client-fetch@0.8.4': {}
 
   '@koyeb/api-client-js@1.1.1':
     dependencies:
-      '@hey-api/client-fetch': 0.8.3
+      '@hey-api/client-fetch': 0.8.4
 
   '@modelcontextprotocol/sdk@1.7.0':
     dependencies:
