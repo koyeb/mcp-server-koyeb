@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // prettier-ignore
 const buildpackBuilder = z.object({
@@ -128,7 +128,7 @@ const instances = [
 function getInstanceDescription(instance: (typeof instances)[number]): string {
   return Object.entries(instance)
     .map(([key, value]) => `${key}: ${value}`)
-    .join(", ");
+    .join(', ');
 }
 
 // prettier-ignore

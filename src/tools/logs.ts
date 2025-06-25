@@ -1,14 +1,15 @@
-import { z } from "zod";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { z } from 'zod';
 
-import { server } from "../server.js";
-import { createTool } from "../utils.js";
+import { createTool } from '../utils.js';
 
-server.tool(
-  "query-logs",
-  "Get the build or runtime logs",
-  {
-    // prettier-ignore
-    query: z.object({
+export function logs(server: McpServer) {
+  server.tool(
+    'query-logs',
+    'Get the build or runtime logs',
+    {
+      // prettier-ignore
+      query: z.object({
       type: z.union([z.literal('build'), z.literal('runtime')]).optional().describe('Type of logs'),
       app_id: z.string().optional().describe('Filter by application id'),
       service_id: z.string().optional().describe('Filter by service id'),
@@ -23,6 +24,7 @@ server.tool(
       regex: z.string().optional().describe('Apply a regex to filter logs. Can\'t be used with `text`.'),
       text: z.string().optional().describe('Looks for this string in logs. Can\'t be used with `regex`.'),
     }),
-  },
-  createTool("queryLogs")
-);
+    },
+    createTool('queryLogs'),
+  );
+}

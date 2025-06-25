@@ -1,8 +1,10 @@
 {
   "name": "@koyeb/mcp-server",
+  "version": "1.0.0",
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
   "type": "module",
+  "module": "./src/index.ts",
   "files": [
     "build"
   ],
@@ -11,7 +13,8 @@
   },
   "scripts": {
     "build": "tsc && chmod 755 build/index.js",
-    "start": "tsx src/index.ts"
+    "start": "tsx src/index.ts",
+    "dev": "pnpx @smithery/cli dev"
   },
   "dependencies": {
     "@koyeb/api-client-js": "^1.1.1",
@@ -19,7 +22,10 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@smithery/cli": "^1.2.11",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^22.13.13",
+    "prettier": "^3.6.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   }

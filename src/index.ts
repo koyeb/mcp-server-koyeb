@@ -1,19 +1,34 @@
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import { server } from "./server.js";
+import pkg from '../package.json';
+import { app } from './tools/app.js';
+import { deployment } from './tools/deployment.js';
+import { instance } from './tools/instance.js';
+import { logs } from './tools/logs.js';
+import { oneClickApps } from './tools/one-click-apps.js';
+import { service } from './tools/service.js';
+import { createTextContent } from './utils.js';
 
-import "./tools/app.js";
-import "./tools/deployment.js";
-import "./tools/instance.js";
-import "./tools/logs.js";
-import "./tools/one-click-apps.js";
-import "./tools/service.js";
+export default function createStatelessServer() {
+  const server = new McpServer({
+    name: 'koyeb',
+    version: pkg.version,
+    capabilities: {
+      resources: {},
+      tools: {},
+    },
+  });
 
-try {
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error("Koyeb MCP Server connected successfully");
-} catch (error) {
-  console.error("Failed to start Koyeb MCP Server:", error);
-  process.exitCode = 1;
+  server.tool('get-token', 'Get the Koyeb API token', {}, () => {
+    return createTextContent(process.env.KOYEB_TOKEN ?? 'No token set');
+  });
+
+  app(server);
+  deployment(server);
+  instance(server);
+  logs(server);
+  oneClickApps(server);
+  service(server);
+
+  return server.server;
 }

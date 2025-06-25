@@ -1,14 +1,15 @@
-import { z } from "zod";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { z } from 'zod';
 
-import { server } from "../server.js";
-import { createTool } from "../utils.js";
+import { createTool } from '../utils.js';
 
-server.tool(
-  "list-instances",
-  "Get the list of instances",
-  {
-    // prettier-ignore
-    query: z.object({
+export function instance(server: McpServer) {
+  server.tool(
+    'list-instances',
+    'Get the list of instances',
+    {
+      // prettier-ignore
+      query: z.object({
       app_id: z.string().optional().describe('Filter on application id'),
       service_id: z.string().optional().describe('Filter on service id'),
       deployment_id: z.string().optional().describe('Filter on deployment id'),
@@ -22,18 +23,19 @@ server.tool(
       starting_time: z.string().optional().describe('The starting time of the period of running instance'),
       ending_time: z.string().optional().describe('The ending time of the period of running instance'),
     }),
-  },
-  createTool("listInstances")
-);
+    },
+    createTool('listInstances'),
+  );
 
-server.tool(
-  "get-instance",
-  "Get a specific instance by its id",
-  {
-    // prettier-ignore
-    path: z.object({
+  server.tool(
+    'get-instance',
+    'Get a specific instance by its id',
+    {
+      // prettier-ignore
+      path: z.object({
       id: z.string().optional().describe('The id of the instance'),
     }),
-  },
-  createTool("getInstance")
-);
+    },
+    createTool('getInstance'),
+  );
+}
