@@ -39,7 +39,7 @@ Add the following to your `.cursor/mcp.json` or `claude_desktop_config.json`.
   "mcpServers": {
     "koyebApi": {
       "command": "npx",
-      "args": ["-y", "@koyeb/mcp-server-koyeb"],
+      "args": ["-y", "@koyeb/mcp-server"],
       "env": {
         "KOYEB_TOKEN": "your_token_here"
       }
@@ -53,7 +53,7 @@ Add the following to your `.cursor/mcp.json` or `claude_desktop_config.json`.
 1. **Install the package from npmjs:**
 
 ```sh
-npm install -g @koyeb/mcp-server-koyeb
+npm install -g @koyeb/mcp-server
 ```
 
 2. **Set your Koyeb API token:**
