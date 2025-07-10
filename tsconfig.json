@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "Node16",
+    "module": "nodenext",
     "moduleResolution": "Node16",
     "resolveJsonModule": true,
     "outDir": "./build",

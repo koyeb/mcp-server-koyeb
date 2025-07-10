@@ -1,6 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import pkg from '../package.json';
+import pkg from '../package.json' with { type: 'json' };
 import { app } from './tools/app.js';
 import { deployment } from './tools/deployment.js';
 import { instance } from './tools/instance.js';

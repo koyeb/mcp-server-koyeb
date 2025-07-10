@@ -1,6 +1,6 @@
 {
   "name": "@koyeb/mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
   "type": "module",
@@ -9,10 +9,10 @@
     "build"
   ],
   "bin": {
-    "koyeb-mcp": "./build/index.js"
+    "koyeb-mcp": "./bin/index.js"
   },
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js",
+    "build": "tsc",
     "start": "tsx src/index.ts",
     "dev": "pnpx @smithery/cli dev"
   },
