@@ -44,7 +44,7 @@ const docker = z.object({
 // prettier-ignore
 const env = z.object({
   key: z.string().optional(),
-  scopes: z.string().optional(),
+  scopes: z.string().array().optional(),
   secret: z.string().optional(),
   value: z.string().optional(),
 });
@@ -133,7 +133,7 @@ function getInstanceDescription(instance: (typeof instances)[number]): string {
 
 // prettier-ignore
 const instanceType = z.object({
-  scopes: z.string().optional(),
+  scopes: z.string().array().optional(),
   type: z.union(instances.map(instance => z.literal(instance.type).describe(getInstanceDescription(instance))) as unknown as [z.ZodString, z.ZodString, ...z.ZodString[]]),
 });
 
@@ -178,7 +178,7 @@ const deploymentScalingTarget = z.object({
 const scaling = z.object({
   max: z.number().describe('Format: int64'),
   min: z.number().describe('Format: int64'),
-  scopes: z.string().optional(),
+  scopes: z.string().array().optional(),
   targets: deploymentScalingTarget.array().optional(),
 });
 

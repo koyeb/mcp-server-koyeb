@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import pkg from '../package.json' with { type: 'json' };
 import { app } from './tools/app.js';
+import { deploy } from './tools/deploy.js';
 import { deployment } from './tools/deployment.js';
 import { instance } from './tools/instance.js';
 import { logs } from './tools/logs.js';
@@ -29,6 +30,7 @@ export default function createStatelessServer() {
   logs(server);
   oneClickApps(server);
   service(server);
+  deploy(server);
 
   return server.server;
 }
