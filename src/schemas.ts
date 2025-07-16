@@ -145,12 +145,12 @@ const port = z.object({
 
 // prettier-ignore
 const regions = z.union([
-  z.literal('fra').describe('Frankfurt, Germany'),
-  z.literal('was').describe('Washington D.C., USA'),
-  z.literal('sin').describe('Singapore'),
-  z.literal('tyo').describe('Tokyo, Japan'),
-  z.literal('par').describe('Paris, France'),
-  z.literal('sfo').describe('San Francisco, USA'),
+  z.literal('fra').describe('Use "fra" as the region identifier for Frankfurt, Germany'),
+  z.literal('was').describe('Use "was" as the region identifier for Washington D.C., USA'),
+  z.literal('sin').describe('Use "sin" as the region identifier for Singapore'),
+  z.literal('tyo').describe('Use "tyo" as the region identifier for Tokyo, Japan'),
+  z.literal('par').describe('Use "par" as the region identifier for Paris, France'),
+  z.literal('sfo').describe('Use "sfo" as the region identifier for San Francisco, USA'),
 ]);
 
 // prettier-ignore
