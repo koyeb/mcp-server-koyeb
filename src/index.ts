@@ -4,6 +4,7 @@ import pkg from '../package.json' with { type: 'json' };
 import { app } from './tools/app.js';
 import { deploy } from './tools/deploy.js';
 import { deployment } from './tools/deployment.js';
+import { exec } from './tools/exec.js';
 import { instance } from './tools/instance.js';
 import { logs } from './tools/logs.js';
 import { oneClickApps } from './tools/one-click-apps.js';
@@ -31,6 +32,7 @@ export default function createStatelessServer() {
   oneClickApps(server);
   service(server);
   deploy(server);
+  exec(server);
 
   return server.server;
 }

@@ -7,7 +7,8 @@ import { ZodRawShape } from 'zod';
 
 type Koyeb = typeof koyeb;
 
-export const auth = `Bearer ${process.env.KOYEB_TOKEN}`;
+export const token = process.env.KOYEB_TOKEN;
+export const auth = `Bearer ${token}`;
 
 export function createApiTool(name: keyof Koyeb): ToolCallback<ZodRawShape> {
   const fn = koyeb[name] as Function;

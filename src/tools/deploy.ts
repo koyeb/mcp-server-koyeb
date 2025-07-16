@@ -53,7 +53,7 @@ export function deploy(server: McpServer) {
         await api(koyeb.createService({ auth, body: { app_id: appId, definition } }));
       }
 
-      return createTextContent('');
+      return createTextContent('done');
     },
   );
 }
