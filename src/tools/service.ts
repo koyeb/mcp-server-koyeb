@@ -2,7 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 import { deploymentDefinitionSchema } from '../schemas.js';
-import { createTool } from '../utils.js';
+import { createApiTool } from '../utils.js';
 
 export function service(server: McpServer) {
   server.tool(
@@ -18,7 +18,7 @@ export function service(server: McpServer) {
       types: z.union([z.literal('INVALID_TYPE'), z.literal('WEB'), z.literal('WORKER'), z.literal('DATABASE')]).array().optional().describe('Filter on service types')
     }),
     },
-    createTool('listServices'),
+    createApiTool('listServices'),
   );
 
   server.tool(
@@ -29,7 +29,7 @@ export function service(server: McpServer) {
         id: z.string().describe('The id of the Service'),
       }),
     },
-    createTool('getService'),
+    createApiTool('getService'),
   );
 
   server.tool(
@@ -46,7 +46,7 @@ export function service(server: McpServer) {
         definition: deploymentDefinitionSchema,
       }),
     },
-    createTool('createService'),
+    createApiTool('createService'),
   );
 
   server.tool(
@@ -67,6 +67,6 @@ export function service(server: McpServer) {
       skip_build: z.boolean().optional().describe('If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.')
     }),
     },
-    createTool('updateService'),
+    createApiTool('updateService'),
   );
 }

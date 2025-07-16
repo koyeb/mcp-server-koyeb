@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
-import { createTool } from '../utils.js';
+import { createApiTool } from '../utils.js';
 
 export function instance(server: McpServer) {
   server.tool(
@@ -24,7 +24,7 @@ export function instance(server: McpServer) {
       ending_time: z.string().optional().describe('The ending time of the period of running instance'),
     }),
     },
-    createTool('listInstances'),
+    createApiTool('listInstances'),
   );
 
   server.tool(
@@ -36,6 +36,6 @@ export function instance(server: McpServer) {
       id: z.string().optional().describe('The id of the instance'),
     }),
     },
-    createTool('getInstance'),
+    createApiTool('getInstance'),
   );
 }

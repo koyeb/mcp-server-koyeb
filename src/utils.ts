@@ -5,7 +5,7 @@ import { ZodRawShape } from 'zod';
 
 type Koyeb = typeof koyeb;
 
-export function createTool(name: keyof Koyeb): ToolCallback<ZodRawShape> {
+export function createApiTool(name: keyof Koyeb): ToolCallback<ZodRawShape> {
   const fn = koyeb[name] as Function;
 
   return async (params: object) => {

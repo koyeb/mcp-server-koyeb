@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
-import { createTool } from '../utils.js';
+import { createApiTool } from '../utils.js';
 
 export function logs(server: McpServer) {
   server.tool(
@@ -25,6 +25,6 @@ export function logs(server: McpServer) {
       text: z.string().optional().describe('Looks for this string in logs. Can\'t be used with `regex`.'),
     }),
     },
-    createTool('queryLogs'),
+    createApiTool('queryLogs'),
   );
 }

@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
-import { createTool } from '../utils.js';
+import { createApiTool } from '../utils.js';
 
 export function deployment(server: McpServer) {
   server.tool(
@@ -17,7 +17,7 @@ export function deployment(server: McpServer) {
         statuses: z.union([z.literal('PENDING'), z.literal('PROVISIONING'), z.literal('SCHEDULED'), z.literal('CANCELING'), z.literal('CANCELED'), z.literal('ALLOCATING'), z.literal('STARTING'), z.literal('HEALTHY'), z.literal('DEGRADED'), z.literal('UNHEALTHY'), z.literal('STOPPING'), z.literal('STOPPED'), z.literal('ERRORING'), z.literal('ERROR'), z.literal('STASHED'), z.literal('SLEEPING')]).array().optional().describe('Filter on statuses')
       }),
     },
-    createTool('listDeployments'),
+    createApiTool('listDeployments'),
   );
 
   server.tool(
@@ -29,6 +29,6 @@ export function deployment(server: McpServer) {
         id: z.string().optional().describe('The id of the deployment'),
       }),
     },
-    createTool('getDeployment'),
+    createApiTool('getDeployment'),
   );
 }

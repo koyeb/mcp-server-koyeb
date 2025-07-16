@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
-import { createTool } from '../utils.js';
+import { createApiTool } from '../utils.js';
 
 export function app(server: McpServer) {
   server.tool(
@@ -14,7 +14,7 @@ export function app(server: McpServer) {
         offset: z.string().optional().describe('The offset in the list of item to return'),
       }),
     },
-    createTool('listApps'),
+    createApiTool('listApps'),
   );
 
   server.tool(
@@ -25,7 +25,7 @@ export function app(server: McpServer) {
         id: z.string().describe('The id of the App'),
       }),
     },
-    createTool('getApp'),
+    createApiTool('getApp'),
   );
 
   server.tool(
@@ -36,6 +36,6 @@ export function app(server: McpServer) {
         name: z.string().describe('The name of the app'),
       }),
     },
-    createTool('createApp'),
+    createApiTool('createApp'),
   );
 }
