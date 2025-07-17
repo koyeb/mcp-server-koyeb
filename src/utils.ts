@@ -36,7 +36,7 @@ export async function api<T>(promise: Promise<ApiResult<T>>): Promise<T> {
   const result = await promise;
 
   if (result.error) {
-    throw Object.assign(new Error('API Call failed'), { result });
+    throw new Error(JSON.stringify(result.error));
   }
 
   return result.data as T;
