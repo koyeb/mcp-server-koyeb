@@ -22,16 +22,15 @@ export function exec(server: McpServer) {
           const stdout: string[] = [];
           const stderr: string[] = [];
 
+          const send = (data: unknown) => {
+            socket.send(JSON.stringify(data));
+          };
+
           socket.addEventListener('error', (event) => {
             reject((event as ErrorEvent).error);
           });
 
           socket.addEventListener('open', async () => {
-            const send = (data: unknown) => {
-              console.log('send', data);
-              socket.send(JSON.stringify(data));
-            };
-
             send({ id: instanceId, id_type: 'INSTANCE_ID', body: { command: shell } });
             send({ body: { stdin: { data: btoa(command + '\n') } } });
             send({ body: { stdin: { data: btoa('exit\n') } } });
