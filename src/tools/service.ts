@@ -43,7 +43,7 @@ export function service(server: McpServer) {
         .optional(),
       body: z.object({
         app_id: z.string().describe('The id of the app'),
-        definition: deploymentDefinitionSchema,
+        definition: deploymentDefinitionSchema(),
       }),
     },
     createApiTool('createService'),
@@ -62,7 +62,7 @@ export function service(server: McpServer) {
       }).optional(),
       // prettier-ignore
       body: z.object({
-        definition: deploymentDefinitionSchema,
+        definition: deploymentDefinitionSchema(),
         save_only: z.boolean().optional().describe('If set, do not trigger a deployment, only store the new settings'),
         skip_build: z.boolean().optional().describe('If set to true, the build stage will be skipped and the image coming from the last successful build step will be used instead. The call fails if no previous successful builds happened.')
       }),

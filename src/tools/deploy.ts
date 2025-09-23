@@ -14,7 +14,7 @@ export function deploy(server: McpServer) {
       path: z.string().describe('Path to the directory to deploy'),
       appName: z.string().describe('Name of the app'),
       serviceName: z.string().describe('Name of the service'),
-      definition: deploymentDefinitionSchema.partial().optional().describe('Custom deployment definition'),
+      definition: deploymentDefinitionSchema().partial().optional().describe('Custom deployment definition'),
     },
     async ({ path, appName, serviceName, definition: customDefinition }) => {
       const appId = await getAppId(appName);
