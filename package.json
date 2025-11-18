@@ -3,6 +3,7 @@
   "version": "1.0.8",
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
+  "repository": "github:koyeb/mcp-server-koyeb",
   "type": "module",
   "module": "./src/index.ts",
   "files": [
