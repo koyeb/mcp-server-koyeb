@@ -168,6 +168,7 @@ function healthCheck() {
 
 // prettier-ignore
 const instances = [
+  { type: 'free',         vCPU: '0.1',  RAM: '512MB', disk: '2GB SSD',    pricePerSecond: '$0.00',      pricePerHour: '$0.00',   pricePerMonth: '$0.00' },
   { type: 'eco-nano',     vCPU: '0.1',  RAM: '256MB', disk: '2GB SSD',    pricePerSecond: '$0.0000006', pricePerHour: '$0.0022', pricePerMonth: '$1.61' },
   { type: 'eco-micro',    vCPU: '0.25', RAM: '512MB', disk: '4GB SSD',    pricePerSecond: '$0.000001',  pricePerHour: '$0.0036', pricePerMonth: '$2.68' },
   { type: 'eco-small',    vCPU: '0.5',  RAM: '1GB',   disk: '8GB SSD',    pricePerSecond: '$0.000002',  pricePerHour: '$0.0072', pricePerMonth: '$5.36' },
@@ -236,8 +237,13 @@ function regions() {
 
 function route() {
   return z.object({
-    path: z.string().optional(),
-    port: z.number().optional().describe('Format: int64'),
+    path: z
+      .string()
+      .optional()
+      .describe(
+        'Public HTTP path of the route associated with the port, mandatory when the port should be accessible',
+      ),
+    port: z.number().optional().describe('Port number'),
   });
 }
 
