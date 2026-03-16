@@ -4,30 +4,55 @@ import { z } from 'zod';
 import { createApiTool } from '../utils.js';
 
 export function deployment(server: McpServer) {
-  server.tool(
+  server.registerTool(
     'list-deployments',
-    'Get the list of deployments',
     {
-      // prettier-ignore
-      query: z.object({
-        app_id: z.string().optional().describe('Filter on application id'),
-        service_id: z.string().optional().describe('Filter on service id'),
-        limit: z.string().optional().describe('The number of items to return'),
-        offset: z.string().optional().describe('The offset in the list of item to return'),
-        statuses: z.union([z.literal('PENDING'), z.literal('PROVISIONING'), z.literal('SCHEDULED'), z.literal('CANCELING'), z.literal('CANCELED'), z.literal('ALLOCATING'), z.literal('STARTING'), z.literal('HEALTHY'), z.literal('DEGRADED'), z.literal('UNHEALTHY'), z.literal('STOPPING'), z.literal('STOPPED'), z.literal('ERRORING'), z.literal('ERROR'), z.literal('STASHED'), z.literal('SLEEPING')]).array().optional().describe('Filter on statuses')
-      }),
+      description: 'Get the list of deployments',
+      inputSchema: {
+        query: z
+          .object({
+            app_id: z.string().describe('Filter on application id'),
+            service_id: z.string().describe('Filter on service id'),
+            limit: z.string().describe('The number of items to return'),
+            offset: z.string().describe('The offset in the list of item to return'),
+            statuses: z
+              .union([
+                z.literal('PENDING'),
+                z.literal('PROVISIONING'),
+                z.literal('SCHEDULED'),
+                z.literal('CANCELING'),
+                z.literal('CANCELED'),
+                z.literal('ALLOCATING'),
+                z.literal('STARTING'),
+                z.literal('HEALTHY'),
+                z.literal('DEGRADED'),
+                z.literal('UNHEALTHY'),
+                z.literal('STOPPING'),
+                z.literal('STOPPED'),
+                z.literal('ERRORING'),
+                z.literal('ERROR'),
+                z.literal('STASHED'),
+                z.literal('SLEEPING'),
+              ])
+              .array()
+              .describe('Filter on statuses'),
+          })
+          .partial()
+          .optional(),
+      },
     },
     createApiTool('listDeployments'),
   );
 
-  server.tool(
+  server.registerTool(
     'get-deployment',
-    'Get a specific deployment by its id',
     {
-      // prettier-ignore
-      path: z.object({
-        id: z.string().optional().describe('The id of the deployment'),
-      }),
+      description: 'Get a specific deployment by its id',
+      inputSchema: {
+        path: z.object({
+          id: z.string().describe('The id of the deployment'),
+        }),
+      },
     },
     createApiTool('getDeployment'),
   );

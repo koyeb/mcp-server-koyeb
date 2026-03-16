@@ -15,13 +15,9 @@ export default function createStatelessServer() {
   const server = new McpServer({
     name: 'koyeb',
     version: pkg.version,
-    capabilities: {
-      resources: {},
-      tools: {},
-    },
   });
 
-  server.tool('get-token', 'Get the Koyeb API token', {}, () => {
+  server.registerTool('get-token', { description: 'Get the Koyeb API token' }, () => {
     return createTextContent(process.env.KOYEB_TOKEN ?? 'No token set');
   });
 

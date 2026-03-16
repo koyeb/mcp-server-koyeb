@@ -3,10 +3,11 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { createTextContent } from '../utils.js';
 
 export function oneClickApps(server: McpServer) {
-  server.tool(
+  server.registerTool(
     'list-one-click-apps',
-    'List one-click apps (example applications) that can be deployed on Koyeb',
-    {},
+    {
+      description: 'List one-click apps (example applications) that can be deployed on Koyeb',
+    },
     async () => {
       const response = await fetch('https://koyeb.com/api/one-click-apps.json');
 

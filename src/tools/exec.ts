@@ -4,13 +4,15 @@ import { z } from 'zod';
 import { createTextContent, token } from '../utils.js';
 
 export function exec(server: McpServer) {
-  server.tool(
+  server.registerTool(
     'exec',
-    'Execute a command in a running deployment',
     {
-      instanceId: z.string(),
-      shell: z.string().array().default(['/bin/sh']),
-      command: z.string(),
+      description: 'Execute a command in a running deployment',
+      inputSchema: {
+        instanceId: z.string(),
+        shell: z.string().array().default(['/bin/sh']),
+        command: z.string(),
+      },
     },
     async ({ instanceId, shell, command }) => {
       const result = await new Promise<{ stdout: string; stderr: string; exitCode: number }>(

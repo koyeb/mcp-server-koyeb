@@ -1,11 +1,14 @@
 {
   "name": "@koyeb/mcp-server",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
   "repository": "github:koyeb/mcp-server-koyeb",
   "type": "module",
   "module": "./src/index.ts",
+  "engines": {
+    "node": ">=20"
+  },
   "files": [
     "build"
   ],
@@ -18,17 +21,17 @@
     "dev": "pnpx @smithery/cli dev"
   },
   "dependencies": {
-    "@koyeb/api-client-js": "^1.1.4",
-    "@modelcontextprotocol/sdk": "^1.15.0",
-    "tar": "^7.4.3",
-    "zod": "^3.24.2"
+    "@koyeb/api-client-js": "^1.1.6",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "tar": "^7.5.11",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@smithery/cli": "^1.2.14",
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/node": "^22.13.13",
-    "prettier": "^3.6.2",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "@smithery/cli": "^4.7.0",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^22.13.17",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }

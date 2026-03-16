@@ -7,14 +7,19 @@ import { deploymentDefinitionSchema } from '../schemas.js';
 import { api, auth, createTextContent } from '../utils.js';
 
 export function deploy(server: McpServer) {
-  server.tool(
+  server.registerTool(
     'deploy',
-    'Deploy a directory to Koyeb',
     {
-      path: z.string().describe('Path to the directory to deploy'),
-      appName: z.string().describe('Name of the app'),
-      serviceName: z.string().describe('Name of the service'),
-      definition: deploymentDefinitionSchema().partial().optional().describe('Custom deployment definition'),
+      description: 'Deploy a directory to Koyeb',
+      inputSchema: {
+        path: z.string().describe('Path to the directory to deploy'),
+        appName: z.string().describe('Name of the app'),
+        serviceName: z.string().describe('Name of the service'),
+        definition: deploymentDefinitionSchema()
+          .partial()
+          .optional()
+          .describe('Custom deployment definition'),
+      },
     },
     async ({ path, appName, serviceName, definition: customDefinition }) => {
       const appId = await getAppId(appName);
@@ -90,15 +95,15 @@ async function createArchive(path: string): Promise<string> {
     stream.on('end', () => resolve(Buffer.concat(buffers)));
   });
 
-  const { archive } = await api(koyeb.createArchive({ auth, body: { size: String(tarball.length) } }));
+  const { archive } = await api(koyeb.createArchive({ auth, body: { size: String(tarball.byteLength) } }));
 
   const response = await fetch(archive!.upload_url!, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/octet-stream',
-      'x-goog-content-length-range': `${tarball.length},${tarball.length}`,
+      'x-goog-content-length-range': `${tarball.byteLength},${tarball.byteLength}`,
     },
-    body: tarball,
+    body: tarball as BufferSource,
   });
 
   if (!response.ok) {
