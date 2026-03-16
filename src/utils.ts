@@ -1,19 +1,23 @@
-import util from 'node:util';
-
 import * as koyeb from '@koyeb/api-client-js';
 import { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { ZodRawShape } from 'zod';
+import z from 'zod';
 
 type Koyeb = typeof koyeb;
+
+type KoyebApiParam<Name extends keyof Koyeb> = Koyeb[Name] extends Function
+  ? Parameters<Koyeb[Name]>[0]
+  : never;
 
 export const token = process.env.KOYEB_TOKEN;
 export const auth = `Bearer ${token}`;
 
-export function createApiTool(name: keyof Koyeb): ToolCallback<ZodRawShape> {
+export function createApiTool<Name extends keyof Koyeb>(
+  name: Name,
+): ToolCallback<z.ZodType<KoyebApiParam<Name>>> {
   const fn = koyeb[name] as Function;
 
-  return async (params: object) => {
+  return async (params) => {
     const result = await fn({ auth, ...params });
 
     if (result.error) {
