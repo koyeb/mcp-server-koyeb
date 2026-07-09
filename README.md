@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/koyeb-mcp-server-koyeb-badge.png)](https://mseep.ai/app/koyeb-mcp-server-koyeb)
+
 # Koyeb MCP Server
 
 > [!NOTE]
