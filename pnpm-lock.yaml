@@ -15,8 +15,8 @@ importers:
         specifier: ^1.27.1
         version: 1.27.1(zod@4.3.6)
       tar:
-        specifier: ^7.5.11
-        version: 7.5.11
+        specifier: ^7.5.21
+        version: 7.5.21
       zod:
         specifier: ^4.3.6
         version: 4.3.6
@@ -687,8 +687,8 @@ packages:
     resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}
     engines: {node: '>= 0.8'}
 
-  tar@7.5.11:
-    resolution: {integrity: sha512-ChjMH33/KetonMTAtpYdgUFr0tbz69Fp2v7zWxQfYZX4g5ZN2nOBXm1R2xyA+lMIKrLKIoKAwFj93jE/avX9cQ==}
+  tar@7.5.21:
+    resolution: {integrity: sha512-XdhtCvlMywwxpCW8YEq3lOXBJpUPTR2OHHcwLPO3HwsJqOHa2Ok/oJ7ruGzp+JrKoRPVCzJwAdEjqLW/vNRPHA==}
     engines: {node: '>=18'}
 
   toidentifier@1.0.1:
@@ -1353,7 +1353,7 @@ snapshots:
 
   statuses@2.0.2: {}
 
-  tar@7.5.11:
+  tar@7.5.21:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
